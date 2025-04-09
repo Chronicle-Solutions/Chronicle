@@ -65,3 +65,4 @@ C:\Users\adasn\source\repos\Chronicle\Chronicle\obj\Debug\net8.0-windows\refint\
 C:\Users\adasn\source\repos\Chronicle\Chronicle\obj\Debug\net8.0-windows\Chronicle.pdb
 C:\Users\adasn\source\repos\Chronicle\Chronicle\obj\Debug\net8.0-windows\Chronicle.genruntimeconfig.cache
 C:\Users\adasn\source\repos\Chronicle\Chronicle\obj\Debug\net8.0-windows\ref\Chronicle.dll
+C:\Users\adasn\Source\Repos\Chronicle\Chronicle\obj\Debug\net8.0-windows\Chronicle.sourcelink.json

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Chronicle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+766fffdc3e80be6c8b8b5f600f1e354348eb0c6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Chronicle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Chronicle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

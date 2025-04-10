@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.Facilities.Buildi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.About", "Chronicle.About\Chronicle.About.csproj", "{55281F3C-0897-324E-20AE-E17740A16B78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.Facilities.Rooms", "Chronicle.Facilities.Rooms\Chronicle.Facilities.Rooms.csproj", "{1770308D-557E-8453-D27B-53BE158F423E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{55281F3C-0897-324E-20AE-E17740A16B78}.Release|x64.Build.0 = Release|Any CPU
 		{55281F3C-0897-324E-20AE-E17740A16B78}.Release|x86.ActiveCfg = Release|Any CPU
 		{55281F3C-0897-324E-20AE-E17740A16B78}.Release|x86.Build.0 = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|x64.Build.0 = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Debug|x86.Build.0 = Debug|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|x64.ActiveCfg = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|x64.Build.0 = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|x86.ActiveCfg = Release|Any CPU
+		{1770308D-557E-8453-D27B-53BE158F423E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

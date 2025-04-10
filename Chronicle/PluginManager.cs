@@ -18,8 +18,9 @@ namespace Chronicle
         public PluginManager()
         {
             string[] pluginPaths = new string[] {
-                "F:\\Chronicle\\Chronicle.Facilities.Buildings\\bin\\Debug\\net8.0-windows",
-                "F:\\Chronicle\\Chronicle.About\\bin\\Debug\\net8.0-windows\\"
+                "C:\\Users\\adasn\\Chronicle\\Chronicle.Facilities.Buildings\\bin\\Debug\\net8.0-windows",
+                "C:\\Users\\adasn\\Chronicle\\Chronicle.About\\bin\\Debug\\net8.0-windows\\",
+                "C:\\Users\\adasn\\Chronicle\\Chronicle.Facilities.Rooms\\bin\\Debug\\net8.0-windows\\"
             };
 
             foreach(string pluginPath in pluginPaths)

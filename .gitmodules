@@ -4,3 +4,6 @@
 [submodule "Chronicle.About"]
 	path = Chronicle.About
 	url = https://github.com/Chronicle-Solutions/Chronicle.About.git
+[submodule "Chronicle.Facilities.Rooms"]
+	path = Chronicle.Facilities.Rooms
+	url = https://github.com/Chronicle-Solutions/Chronicle.Facilities.Rooms.git

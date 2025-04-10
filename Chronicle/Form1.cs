@@ -4,14 +4,12 @@ namespace Chronicle
 {
     public partial class Form1 : Form
     {
-        MySqlConnectionStringBuilder cSb;
         public Form1()
         {
-            cSb = new MySqlConnectionStringBuilder();
-            cSb.UserID = "es1dev";
-            cSb.Password = "Password";
-            cSb.Database = "ES1DEV";
-            cSb.Server = "db.maria.adasneves.info";
+            Globals.Username = "es1dev";
+            Globals.Password = "Password";
+            Globals.Database = "ES1DEV";
+            Globals.Host = "db.maria.adasneves.info";
             InitializeComponent();
             populateMenu(menuStrip2.Items);
 
@@ -20,7 +18,7 @@ namespace Chronicle
         public void populateMenu(ToolStripItemCollection parent)
         {
             
-            using (MySqlConnection conn = new(cSb.ConnectionString))
+            using (MySqlConnection conn = new(Globals.ConnectionString))
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
@@ -28,7 +26,7 @@ namespace Chronicle
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ToolStripDropDownItem item = new ToolStripMenuItem(reader.GetString("menuText"));
+                    ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
                     populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
                 }
@@ -38,7 +36,7 @@ namespace Chronicle
 
         public void populateMenu(ToolStripItemCollection parent, int parentID)
         {
-            using (MySqlConnection conn = new(cSb.ConnectionString))
+            using (MySqlConnection conn = new(Globals.ConnectionString))
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
@@ -47,7 +45,7 @@ namespace Chronicle
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    ToolStripDropDownItem item = new ToolStripMenuItem(reader.GetString("menuText"));
+                    ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
                     populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
                 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj": {}
+    "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj": {
+    "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj",
+        "projectUniqueName": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj",
         "projectName": "Chronicle",
-        "projectPath": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj",
+        "projectPath": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj",
         "packagesPath": "C:\\Users\\adasn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\obj\\",
+        "outputPath": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[2025.2.0, )"
             },
+            "FontAwesome.Sharp": {
+              "target": "Package",
+              "version": "[6.6.0, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.4.0, )"
@@ -82,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

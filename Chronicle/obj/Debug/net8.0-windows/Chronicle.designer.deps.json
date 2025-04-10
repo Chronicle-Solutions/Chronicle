@@ -30,6 +30,14 @@
           }
         }
       },
+      "FontAwesome.Sharp/6.6.0": {
+        "runtime": {
+          "lib/net8.0-windows7.0/FontAwesome.Sharp.dll": {
+            "assemblyVersion": "6.6.0.0",
+            "fileVersion": "6.6.0.0"
+          }
+        }
+      },
       "Microsoft.CodeAnalysis.Analyzers/3.3.2": {},
       "Microsoft.CodeAnalysis.Common/4.0.1": {
         "dependencies": {
@@ -340,6 +348,13 @@
       "sha512": "sha512-eeU567ztJAN66LNK/uzi3G3gi+PwTwNM7p+lx+iHpMmZ8hcln42n63fmbS8TTEsvLHKgw+GabOJhESoGDB5urQ==",
       "path": "fastreport.opensource/2025.2.0",
       "hashPath": "fastreport.opensource.2025.2.0.nupkg.sha512"
+    },
+    "FontAwesome.Sharp/6.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bJCb2x73UC1nD9+9iMLaUy6Ujf9Pf+buL6FHwVnaoDYT4CQNLazz59hO5gQ0+SMSW0G+ZXmjjShOYr3Jn2UZiw==",
+      "path": "fontawesome.sharp/6.6.0",
+      "hashPath": "fontawesome.sharp.6.6.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
       "type": "package",

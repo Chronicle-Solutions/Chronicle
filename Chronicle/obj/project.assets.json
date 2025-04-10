@@ -41,6 +41,18 @@
           "buildMultiTargeting/FastReport.OpenSource.props": {}
         }
       },
+      "FontAwesome.Sharp/6.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
       "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
         "type": "package",
         "build": {
@@ -463,6 +475,23 @@
         "lib/net6.0-windows7.0/FastReport.xml",
         "lib/net6.0/FastReport.dll",
         "lib/net6.0/FastReport.xml"
+      ]
+    },
+    "FontAwesome.Sharp/6.6.0": {
+      "sha512": "bJCb2x73UC1nD9+9iMLaUy6Ujf9Pf+buL6FHwVnaoDYT4CQNLazz59hO5gQ0+SMSW0G+ZXmjjShOYr3Jn2UZiw==",
+      "type": "package",
+      "path": "fontawesome.sharp/6.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.sharp.6.6.0.nupkg.sha512",
+        "fontawesome.sharp.nuspec",
+        "lib/net472/FontAwesome.Sharp.dll",
+        "lib/net48/FontAwesome.Sharp.dll",
+        "lib/net6.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/net7.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/net8.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
@@ -1131,6 +1160,7 @@
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "FastReport.OpenSource >= 2025.2.0",
+      "FontAwesome.Sharp >= 6.6.0",
       "MySqlConnector >= 2.4.0",
       "WindowsRibbon >= 2.16.1"
     ]
@@ -1142,11 +1172,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj",
+      "projectUniqueName": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj",
       "projectName": "Chronicle",
-      "projectPath": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj",
+      "projectPath": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj",
       "packagesPath": "C:\\Users\\adasn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\obj\\",
+      "outputPath": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1189,6 +1219,10 @@
             "target": "Package",
             "version": "[2025.2.0, )"
           },
+          "FontAwesome.Sharp": {
+            "target": "Package",
+            "version": "[6.6.0, )"
+          },
           "MySqlConnector": {
             "target": "Package",
             "version": "[2.4.0, )"
@@ -1217,7 +1251,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

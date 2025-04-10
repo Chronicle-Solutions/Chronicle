@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "EZ3NPep7PEs=",
+  "dgSpecHash": "wqjXeZa0hdw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\adasn\\Source\\Repos\\Chronicle\\Chronicle\\Chronicle.csproj",
+  "projectFilePath": "C:\\Users\\adasn\\Desktop\\Chronicle\\Chronicle\\Chronicle.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adasn\\.nuget\\packages\\fastreport.compat\\2025.2.0\\fastreport.compat.2025.2.0.nupkg.sha512",
     "C:\\Users\\adasn\\.nuget\\packages\\fastreport.opensource\\2025.2.0\\fastreport.opensource.2025.2.0.nupkg.sha512",
+    "C:\\Users\\adasn\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
     "C:\\Users\\adasn\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
     "C:\\Users\\adasn\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.1\\microsoft.codeanalysis.common.4.0.1.nupkg.sha512",
     "C:\\Users\\adasn\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.1\\microsoft.codeanalysis.csharp.4.0.1.nupkg.sha512",

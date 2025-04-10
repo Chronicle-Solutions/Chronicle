@@ -18,9 +18,7 @@ namespace Chronicle
         public PluginManager()
         {
             string[] pluginPaths = new string[] {
-                "C:\\Users\\adasn\\Chronicle\\Chronicle.Facilities.Buildings\\bin\\Debug\\net8.0-windows",
-                "C:\\Users\\adasn\\Chronicle\\Chronicle.About\\bin\\Debug\\net8.0-windows\\",
-                "C:\\Users\\adasn\\Chronicle\\Chronicle.Facilities.Rooms\\bin\\Debug\\net8.0-windows\\"
+               Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Chronicle", "plugins")
             };
 
             foreach(string pluginPath in pluginPaths)
@@ -56,7 +54,8 @@ namespace Chronicle
             {
                 if (typeof(IPlugable).IsAssignableFrom(type))
                 {
-                    IPlugable result = Activator.CreateInstance(type) as IPlugable;
+                    object? objResult = Activator.CreateInstance(type);
+                    IPlugable? result = objResult as IPlugable;
                     if (result != null)
                     {
                         count++;
@@ -77,7 +76,7 @@ namespace Chronicle
 
         public int ExecutePlugin(string pluginName)
         {
-            IPlugable plugin;
+            IPlugable? plugin;
             if(_plugins.TryGetValue(pluginName, out plugin))
             {
                 return plugin.Execute();
@@ -95,9 +94,9 @@ namespace Chronicle
             _resolver = new AssemblyDependencyResolver(pluginPath);
         }
 
-        protected override Assembly Load(AssemblyName assemblyName)
+        protected override Assembly? Load(AssemblyName assemblyName)
         {
-            string assemblyPath = _resolver.ResolveAssemblyToPath(assemblyName);
+            string? assemblyPath = _resolver.ResolveAssemblyToPath(assemblyName);
             if (assemblyPath != null)
             {
                 return LoadFromAssemblyPath(assemblyPath);
@@ -108,7 +107,7 @@ namespace Chronicle
 
         protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
         {
-            string libraryPath = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
+            string? libraryPath = _resolver.ResolveUnmanagedDllToPath(unmanagedDllName);
             if (libraryPath != null)
             {
                 return LoadUnmanagedDllFromPath(libraryPath);

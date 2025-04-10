@@ -5,7 +5,7 @@ namespace Chronicle
 
     public static class Globals
     {
-        public static PluginManager PluginManager;
+        public static PluginManager PluginManager = new();
         private static MySqlConnectionStringBuilder connStringBuilder = new();
         public static string Username { get => connStringBuilder.UserID; set => connStringBuilder.UserID = value; }
         public static string Password { get => connStringBuilder.Password; set => connStringBuilder.Password = value; }
@@ -29,7 +29,6 @@ namespace Chronicle
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Globals.PluginManager = new();
             Application.Run(new Form1());
         }
     }

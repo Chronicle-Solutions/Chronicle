@@ -32,7 +32,7 @@ namespace Chronicle
             cSb.Server = "db.maria.adasneves.info";
             MySqlConnection conn = new(cSb.ConnectionString);
             conn.Open();
-            this.SuspendLayout();
+            SuspendLayout();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT * FROM FORMS WHERE formID = @fID";
             cmd.Parameters.AddWithValue("@fID", formID);

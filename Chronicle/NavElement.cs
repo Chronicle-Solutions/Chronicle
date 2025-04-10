@@ -16,7 +16,7 @@ namespace Chronicle
             this.pluginID = pluginID;
         }
 
-        private void openElement(object sender, EventArgs e)
+        private void openElement(object? sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(pluginID))
             {

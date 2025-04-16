@@ -11,13 +11,13 @@ namespace Chronicle
             Globals.Database = "ES1DEV";
             Globals.Host = "db.maria.adasneves.info";
             InitializeComponent();
-            populateMenu(menuStrip2.Items);
+            populateMenu(menuStrip2.Items, "/");
 
         }
 
-        public void populateMenu(ToolStripItemCollection parent)
+        public static void populateMenu(ToolStripItemCollection parent, string path)
         {
-            
+
             using (MySqlConnection conn = new(Globals.ConnectionString))
             {
                 conn.Open();
@@ -28,13 +28,13 @@ namespace Chronicle
                 {
                     ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
-                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
+                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"), $"{path}/{reader.GetString("menuText")}");
                 }
                 reader.Close();
             }
         }
 
-        public void populateMenu(ToolStripItemCollection parent, int parentID)
+        public static void populateMenu(ToolStripItemCollection parent, int parentID, string path)
         {
             using (MySqlConnection conn = new(Globals.ConnectionString))
             {
@@ -47,16 +47,10 @@ namespace Chronicle
                 {
                     ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
-                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
+                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"), $"{path}/{reader.GetString("menuText")}");
                 }
                 reader.Close();
             }
-        }
-
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

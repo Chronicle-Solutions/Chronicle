@@ -1,8 +1,8 @@
+using System.Diagnostics;
 using MySqlConnector;
 
 namespace Chronicle
 {
-
     public static class Globals
     {
         public static PluginManager PluginManager = new();
@@ -25,11 +25,30 @@ namespace Chronicle
         [STAThread]
         static void Main()
         {
-            
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            List<string> envs = new List<string>();
+            //envs.Add("ES1DEV");
+            //envs.Add("ES1TST");
+            Auth a = new Auth(envs);
+            DialogResult result = a.ShowDialog();
+            if (result != DialogResult.OK) return;
+
+
+            Form1 main = new Form1();
+            main.FormClosed += FormClosed;
+            main.Show();
+            Application.Run();
+        }
+
+        static void FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((Form)sender).FormClosed -= FormClosed;
+            if (Application.OpenForms.Count == 0) Application.ExitThread();
+            else Application.OpenForms[0].FormClosed += FormClosed;
         }
     }
 }

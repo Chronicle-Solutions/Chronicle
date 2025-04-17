@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Xml;
 using MySqlConnector;
 
 namespace Chronicle
@@ -15,25 +16,33 @@ namespace Chronicle
 
         public static string ConnectionString { get => connStringBuilder.ConnectionString; }
 
+        public static string AuthServer { get; set; }
+
+        public static string OperatorID { get; set; }
+
         public static Version BaseAppVersion => new Version("0.0.0.1");
     }
     public static class Program
     {
+
+        public static void loadConfig()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Chronicle", "config.xml"));
+            Globals.AuthServer = doc.DocumentElement.SelectSingleNode("auth").InnerText;
+        }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-
+            loadConfig();
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            List<string> envs = new List<string>();
-            //envs.Add("ES1DEV");
-            //envs.Add("ES1TST");
-            Auth a = new Auth(envs);
+            Auth a = new Auth();
             DialogResult result = a.ShowDialog();
             if (result != DialogResult.OK) return;
 

@@ -10,6 +10,7 @@ def main():
     for f in os.scandir("."):
         if not f.is_dir() or f.path.startswith(".\\.") or f.path == ".\\Chronicle": continue
         build_folder = Path(f.path, bin_path)
+        if not build_folder.exists(): continue
         print(f"Found {f.path.removeprefix(".\\")}")
         for dll in os.scandir(build_folder):
             if not dll.path.endswith(".dll"): continue

@@ -58,6 +58,7 @@
             txtUserPass.Name = "txtUserPass";
             txtUserPass.Size = new Size(265, 23);
             txtUserPass.TabIndex = 1;
+            txtUserPass.UseSystemPasswordChar = true;
             // 
             // groupBox1
             // 
@@ -109,7 +110,6 @@
             // 
             // button1
             // 
-            button1.DialogResult = DialogResult.OK;
             button1.Location = new Point(624, 49);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
@@ -117,6 +117,7 @@
             button1.TabIndex = 4;
             button1.Text = "Log In";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 

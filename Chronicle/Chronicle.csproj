@@ -13,6 +13,7 @@
     <PackageReference Include="FastReport.OpenSource" Version="2025.2.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
     <PackageReference Include="MySqlConnector" Version="2.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WindowsRibbon" Version="2.16.1" />
   </ItemGroup>
 

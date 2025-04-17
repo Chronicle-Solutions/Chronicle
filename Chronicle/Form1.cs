@@ -6,10 +6,6 @@ namespace Chronicle
     {
         public Form1()
         {
-            Globals.Username = "es1dev";
-            Globals.Password = "Password";
-            Globals.Database = "ES1DEV";
-            Globals.Host = "db.maria.adasneves.info";
             InitializeComponent();
             populateMenu(menuStrip2.Items, "/");
 

@@ -35,20 +35,18 @@
             // 
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
-            menuStrip2.Padding = new Padding(7, 3, 0, 3);
-            menuStrip2.Size = new Size(914, 25);
+            menuStrip2.Size = new Size(800, 24);
             menuStrip2.TabIndex = 1;
             menuStrip2.Text = "menuStrip2";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(menuStrip2);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Chronicle Solutions";
             ResumeLayout(false);
             PerformLayout();
         }

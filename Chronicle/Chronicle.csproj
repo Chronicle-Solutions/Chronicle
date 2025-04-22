@@ -31,5 +31,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+	
+  <PropertyGroup>
+    <PostBuildEvent>"$(SolutionDir)build.py"</PostBuildEvent>
+  </PropertyGroup>
+
 
 </Project>

@@ -8,6 +8,7 @@ namespace Chronicle
         {
             InitializeComponent();
             populateMenu(menuStrip2.Items, "/");
+            this.Text += $" [{Globals.Database}]";
 
         }
 
@@ -18,7 +19,8 @@ namespace Chronicle
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM MENU_ITEMS WHERE parentItemID is NULL ORDER BY sortOrder DESC";
+                cmd.CommandText = "SELECT DISTINCT A.* FROM MENU_ITEMS A, MENU_ITEM_ACCESS B, OPERATOR_CLASS_LINK C WHERE parentItemID is NULL AND A.menuItemID = B.menuItemID AND B.operatorClassID = C.operatorClassID AND C.operatorID = @operatorID ORDER BY sortOrder DESC";
+                cmd.Parameters.AddWithValue("@operatorID", Globals.OperatorID);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -36,8 +38,9 @@ namespace Chronicle
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM MENU_ITEMS WHERE parentItemID = @pID ORDER BY sortOrder DESC";
+                cmd.CommandText = "SELECT DISTINCT A.* FROM MENU_ITEMS A, MENU_ITEM_ACCESS B, OPERATOR_CLASS_LINK C WHERE parentItemID = @pID AND A.menuItemID = B.menuItemID AND B.operatorClassID = C.operatorClassID AND C.operatorID = @operatorID ORDER BY sortOrder DESC";
                 cmd.Parameters.AddWithValue("@pID", parentID);
+                cmd.Parameters.AddWithValue("@operatorID", Globals.OperatorID);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

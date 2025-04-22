@@ -85,6 +85,7 @@ namespace Chronicle
         }
     }
 
+
     class PluginLoadContext : AssemblyLoadContext
     {
         private AssemblyDependencyResolver _resolver;

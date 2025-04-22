@@ -23,5 +23,6 @@ namespace Chronicle
                 Globals.PluginManager.ExecutePlugin(pluginID);
             }
         }
+
     }
 }

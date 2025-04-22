@@ -50,6 +50,7 @@
             txtuserID.Name = "txtuserID";
             txtuserID.Size = new Size(265, 23);
             txtuserID.TabIndex = 0;
+            txtuserID.KeyDown += txtUserPass_KeyDown;
             // 
             // txtUserPass
             // 
@@ -59,6 +60,7 @@
             txtUserPass.Size = new Size(265, 23);
             txtUserPass.TabIndex = 1;
             txtUserPass.UseSystemPasswordChar = true;
+            txtUserPass.KeyDown += txtUserPass_KeyDown;
             // 
             // groupBox1
             // 

@@ -57,7 +57,8 @@ namespace Chronicle
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var requestData = new { 
+            var requestData = new
+            {
                 operatorID = txtuserID.Text,
                 password = txtUserPass.Text
             };
@@ -99,6 +100,18 @@ namespace Chronicle
             Globals.Database = data["apName"];
             DialogResult = DialogResult.OK;
 
+        }
+
+        private void txtUserPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button1_Click(null, null);
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
         }
     }
 

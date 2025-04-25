@@ -21,6 +21,8 @@ namespace Chronicle
         public static string OperatorID { get; set; }
 
         public static Version BaseAppVersion => new Version("0.0.0.1");
+
+        public static long sessionID;
     }
     public static class Program
     {
@@ -45,19 +47,48 @@ namespace Chronicle
             Auth a = new Auth();
             DialogResult result = a.ShowDialog();
             if (result != DialogResult.OK) return;
-
-
+            // Log Session Start
+            logSessionStart();
             Form1 main = new Form1();
             main.FormClosed += FormClosed;
             main.Show();
+            Application.ApplicationExit += new EventHandler(logSessionEnd);
             Application.Run();
         }
 
         static void FormClosed(object sender, FormClosedEventArgs e)
         {
             ((Form)sender).FormClosed -= FormClosed;
-            if (Application.OpenForms.Count == 0) Application.ExitThread();
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.ExitThread();
+            }
             else Application.OpenForms[0].FormClosed += FormClosed;
+        }
+
+        static void logSessionStart()
+        {
+            using(MySqlConnection conn = new MySqlConnection(Globals.ConnectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "INSERT INTO SESSIONS (operatorID, ipAddress) VALUES (@oprID, (SELECT SUBSTRING_INDEX(host, ':', 1) from information_schema.processlist WHERE ID=connection_id()));";
+                cmd.Parameters.AddWithValue("@oprID", Globals.OperatorID);
+                cmd.ExecuteNonQuery();
+                Globals.sessionID = cmd.LastInsertedId;
+            }
+        }
+
+        static void logSessionEnd(object sender, EventArgs e)
+        {
+            using (MySqlConnection conn = new MySqlConnection(Globals.ConnectionString))
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "UPDATE SESSIONS SET sessionCloseTime=current_timestamp WHERE sessionID = @sessionID;";
+                cmd.Parameters.AddWithValue("@sessionID", Globals.sessionID);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

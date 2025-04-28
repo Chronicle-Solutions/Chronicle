@@ -13,8 +13,5 @@
     <Compile Update="NavElement.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="NewEnv.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

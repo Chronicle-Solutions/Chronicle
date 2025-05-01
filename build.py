@@ -19,6 +19,8 @@ def main():
                 os.mkdir(Path(os.getenv("APPDATA"), "Chronicle"))
             if not os.path.exists(Path(os.getenv("APPDATA"), "Chronicle", "plugins")):
                 os.mkdir(Path(os.getenv("APPDATA"), "Chronicle", "plugins"))
+            # if "chronicle" not in dll.path.split('\\')[-1].lower(): continue
+            
             print(f"Copied {dll.path.split('\\')[-1]}")
             shutil.copyfile(dll.path, Path(os.getenv("APPDATA"), "Chronicle", "plugins", dll.path.split('\\')[-1]))
 

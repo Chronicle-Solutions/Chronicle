@@ -27,7 +27,8 @@ namespace Chronicle
                 foreach(string file in fileEntries)
                 {
                     if (!file.EndsWith(".dll")) continue;
-                    Assembly pluginAssembly = LoadPlugin(file);
+                    Assembly? pluginAssembly = LoadPlugin(file);
+                    if (pluginAssembly is null) continue;
                     IEnumerable<IPlugable> plugins = CreateCommands(pluginAssembly);
                     foreach(IPlugable plugin in plugins)
                     {
@@ -37,10 +38,10 @@ namespace Chronicle
             }
         }
 
-
-        static Assembly LoadPlugin(string absolutePath)
+        static Assembly? LoadPlugin(string absolutePath)
         {
             string pluginLocation = Path.GetFullPath(absolutePath.Replace('\\', Path.DirectorySeparatorChar));
+            if (!pluginLocation.Contains("Chronicle.")) return null;
             Console.WriteLine($"Loading commands from: {pluginLocation}");
             PluginLoadContext loadContext = new PluginLoadContext(pluginLocation);
             return loadContext.LoadFromAssemblyName(new AssemblyName(Path.GetFileNameWithoutExtension(pluginLocation)));

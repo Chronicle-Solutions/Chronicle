@@ -8,9 +8,14 @@ namespace Chronicle
         public Form1()
         {
             InitializeComponent();
-            MenuUtils.populateMenu(menuStrip2.Items, "/");
+            // MenuUtils.populateMenu(menuStrip2.Items, "/");
             this.Text += $" [{Globals.Database}]";
+            menuStrip2.addHandler("File/Exit", onExitClick);
+        }
 
+        private void onExitClick(object? sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

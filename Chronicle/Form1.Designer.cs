@@ -1,4 +1,6 @@
-﻿namespace Chronicle
+﻿using Chronicle.Controls;
+
+namespace Chronicle
 {
     partial class Form1
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip2 = new MenuStrip();
+            menuStrip2 = new NavMenu();
             SuspendLayout();
             // 
             // menuStrip2
@@ -38,6 +40,7 @@
             menuStrip2.Size = new Size(800, 24);
             menuStrip2.TabIndex = 1;
             menuStrip2.Text = "menuStrip2";
+            menuStrip2.populate(false);
             // 
             // Form1
             // 
@@ -52,6 +55,6 @@
         }
 
         #endregion
-        private MenuStrip menuStrip2;
+        private NavMenu menuStrip2;
     }
 }

@@ -11,3 +11,6 @@
 [submodule "Chronicle.Security.Operators"]
 	path = Chronicle.Security.Operators
 	url = https://github.com/Chronicle-Solutions/Chronicle.Security.Operators.git
+[submodule "Chronicle.Security.Classes"]
+	path = Chronicle.Security.Classes
+	url = https://github.com/Chronicle-Solutions/Chronicle.Security.Classes.git

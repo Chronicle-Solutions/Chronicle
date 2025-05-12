@@ -19,22 +19,23 @@ namespace Chronicle.Controls
             if (populateInChildMenu)
             {
                 ToolStripMenuItem itm = new ToolStripMenuItem("Menu");
-                populateMenu(itm.DropDownItems);
                 this.Items.Add(itm);
+                populateMenu(itm.DropDownItems, true);
+                
             } else
             {
-                populateMenu(this.Items);
+                populateMenu(this.Items, false);
             }
         }
 
-        private NavElement? findItem(ToolStripItemCollection root, string path)
+        private static NavElement? findItem(ToolStripItemCollection root, string path)
         {
             if (root == null || string.IsNullOrEmpty(path))
                 return null;
 
             string[] parts = path.Split('/');
             ToolStripItemCollection currentCollection = root;
-            ToolStripItem currentItem = null;
+            ToolStripItem? currentItem = null;
 
             foreach (string part in parts)
             {
@@ -78,7 +79,7 @@ namespace Chronicle.Controls
             
         }
 
-        public static void populateMenu(ToolStripItemCollection parent)
+        public static void populateMenu(ToolStripItemCollection parent, bool isSubmenu)
         {
 
             using (MySqlConnection conn = new(Globals.ConnectionString))
@@ -90,15 +91,17 @@ namespace Chronicle.Controls
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    bool populateInSubmenu = reader.GetBoolean("showInSubmenu");
+                    if (isSubmenu && !populateInSubmenu) continue;
                     ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
-                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
+                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"), isSubmenu);
                 }
                 reader.Close();
             }
         }
 
-        public static void populateMenu(ToolStripItemCollection parent, int parentID)
+        public static void populateMenu(ToolStripItemCollection parent, int parentID, bool isSubmenu)
         {
             using (MySqlConnection conn = new(Globals.ConnectionString))
             {
@@ -110,9 +113,11 @@ namespace Chronicle.Controls
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    bool populateInSubmenu = reader.GetBoolean("showInSubmenu");
+                    if (isSubmenu && !populateInSubmenu) continue;
                     ToolStripDropDownItem item = new NavElement(reader.GetString("menuText"), reader["pluginID"] is DBNull ? null : reader.GetString("pluginID"));
                     parent.Add(item);
-                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"));
+                    populateMenu(item.DropDownItems, reader.GetInt32("menuItemID"), isSubmenu);
                 }
                 reader.Close();
             }

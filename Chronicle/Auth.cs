@@ -34,13 +34,13 @@ namespace Chronicle
         {
             InitializeComponent();
             client = new HttpClient();
-            client.BaseAddress = new Uri(Globals.AuthServer);
+            client.BaseAddress = new Uri(Globals.AuthServer ?? "");
 
             var task = Task.Run(() => client.GetAsync("environments"));
             task.Wait();
             var task2 = Task.Run(() => task.Result.Content.ReadAsStringAsync());
             var response = task2.Result;
-            environmentBox.Items.AddRange(JsonSerializer.Deserialize<List<string>>(response).ToArray());
+            environmentBox.Items.AddRange(JsonSerializer.Deserialize<List<string>>(response)?.ToArray() ?? Array.Empty<object>());
             if (environmentBox.Items.Count == 0)
             {
                 throw new Exception("Failed to get any environments from Auth Endpoint.");
@@ -55,7 +55,7 @@ namespace Chronicle
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object? sender, EventArgs e)
         {
             var requestData = new
             {
@@ -88,8 +88,8 @@ namespace Chronicle
 
             StreamReader reader = new StreamReader(response.Content.ReadAsStream());
 
-            Dictionary<string, string> data = JsonSerializer.Deserialize<Dictionary<string, string>>(reader.ReadToEnd());
-
+            Dictionary<string, string>? data = JsonSerializer.Deserialize<Dictionary<string, string>>(reader.ReadToEnd());
+            if (data is null) return;
             reader.Close();
 
             Globals.Username = data["apUser"];
@@ -106,7 +106,7 @@ namespace Chronicle
         {
             if(e.KeyCode == Keys.Enter)
             {
-                button1_Click(null, null);
+                button1_Click(null, new EventArgs());
             }
             if (e.KeyCode == Keys.Escape)
             {

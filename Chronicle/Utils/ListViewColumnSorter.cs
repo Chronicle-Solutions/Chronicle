@@ -50,14 +50,12 @@ namespace Chronicle.Utils
         /// <param name="x">First object to be compared</param>
         /// <param name="y">Second object to be compared</param>
         /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
-        public int Compare(object x, object y)
+        public int Compare(object? x, object? y)
         {
             int compareResult;
-            ListViewItem listviewX, listviewY;
-
+            if (x is not ListViewItem listviewX) return -1;
             // Cast the objects to be compared to ListViewItem objects
-            listviewX = (ListViewItem)x;
-            listviewY = (ListViewItem)y;
+            if (y is not ListViewItem listviewY) return -1;
 
             // Compare the two items
             compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using System.Xml;
 using MySqlConnector;
 
@@ -16,9 +17,9 @@ namespace Chronicle
 
         public static string ConnectionString { get => connStringBuilder.ConnectionString; }
 
-        public static string AuthServer { get; set; }
+        public static string? AuthServer { get; set; }
 
-        public static string OperatorID { get; set; }
+        public static string? OperatorID { get; set; }
 
         public static Version BaseAppVersion => new Version("0.0.0.1");
 
@@ -31,7 +32,7 @@ namespace Chronicle
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Chronicle", "config.xml"));
-            Globals.AuthServer = doc.DocumentElement.SelectSingleNode("auth").InnerText;
+            Globals.AuthServer = doc.DocumentElement?.SelectSingleNode("auth")?.InnerText ?? "";
         }
         /// <summary>
         ///  The main entry point for the application.
@@ -56,14 +57,35 @@ namespace Chronicle
             Application.Run();
         }
 
-        static void FormClosed(object sender, FormClosedEventArgs e)
+        static void FormClosed(object? sender, FormClosedEventArgs e)
         {
-            ((Form)sender).FormClosed -= FormClosed;
+            if (sender is not Form form) return;
+            // Get the current form. Remove the handler.
+            form.FormClosed -= FormClosed;
+
+            // If there are no forms open, exit the program.
             if (Application.OpenForms.Count == 0)
             {
                 Application.ExitThread();
             }
-            else Application.OpenForms[0].FormClosed += FormClosed;
+            else
+            {
+                // Check for "stuck forms". Forms that are open but not visible.
+                bool formVisible = false;
+                foreach (Form frm in Application.OpenForms)
+                {
+                    formVisible |= frm.Visible;
+                }
+                // If no forms are open but a form is "stuck", exit. Otherwise, add the event handler.
+                if (formVisible)
+                {
+                    if (Application.OpenForms[0] is not Form frm) return;
+                    frm.FormClosed += new FormClosedEventHandler(FormClosed);
+                } else
+                {
+                    Application.ExitThread();
+                }
+            }
         }
 
         static void logSessionStart()
@@ -72,14 +94,24 @@ namespace Chronicle
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO SESSIONS (operatorID, ipAddress) VALUES (@oprID, (SELECT SUBSTRING_INDEX(host, ':', 1) from information_schema.processlist WHERE ID=connection_id()));";
+                // Get IP Address
+                HttpClient client = new HttpClient();
+                var webRequest = new HttpRequestMessage(HttpMethod.Get, $"https://api.ipify.org/");
+
+                var response = client.Send(webRequest);
+                StreamReader reader = new StreamReader(response.Content.ReadAsStream());
+                string IPAddr = reader.ReadToEnd();
+
+
+                cmd.CommandText = "INSERT INTO SESSIONS (operatorID, ipAddress) VALUES (@oprID, @ip);";
                 cmd.Parameters.AddWithValue("@oprID", Globals.OperatorID);
+                cmd.Parameters.AddWithValue("@ip", IPAddr);
                 cmd.ExecuteNonQuery();
                 Globals.sessionID = cmd.LastInsertedId;
             }
         }
 
-        static void logSessionEnd(object sender, EventArgs e)
+        static void logSessionEnd(object? sender, EventArgs e)
         {
             using (MySqlConnection conn = new MySqlConnection(Globals.ConnectionString))
             {

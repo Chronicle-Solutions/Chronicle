@@ -52,25 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_7CB38E9614EBFA4500F1F9096B4D8ECD"
-        "OwnerKey" = "8:_B270BAD4BB6ED94A4668802F4197F4C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7CB38E9614EBFA4500F1F9096B4D8ECD"
         "OwnerKey" = "8:_EEACA95F2FA54A5194154723E3440342"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7CB38E9614EBFA4500F1F9096B4D8ECD"
-        "OwnerKey" = "8:_933FF8199B9296928A88D9FE0FAD2804"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7CB38E9614EBFA4500F1F9096B4D8ECD"
-        "OwnerKey" = "8:_E26C46458B903A4CA8C127F909CD177C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -111,12 +93,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B270BAD4BB6ED94A4668802F4197F4C1"
-        "OwnerKey" = "8:_933FF8199B9296928A88D9FE0FAD2804"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C52CB103D2AC4C12B550F6FE7985207D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -125,12 +101,6 @@
         {
         "MsmKey" = "8:_D7AC1173207642BE84CA6E6FE11D4E77"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E26C46458B903A4CA8C127F909CD177C"
-        "OwnerKey" = "8:_933FF8199B9296928A88D9FE0FAD2804"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -148,7 +118,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3F1CC790D2A845F1B4C0F27C2EB32139"
+        "OwnerKey" = "8:_EEACA95F2FA54A5194154723E3440342"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EEACA95F2FA54A5194154723E3440342"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,13 +136,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEACA95F2FA54A5194154723E3440342"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EEACA95F2FA54A5194154723E3440342"
+        "OwnerKey" = "8:_3F1CC790D2A845F1B4C0F27C2EB32139"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -187,6 +157,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -203,6 +181,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -516,11 +502,6 @@
             "AssemblyAsmDisplayName" = "8:FastReport.Compat, Version=2025.2.0.0, Culture=neutral, PublicKeyToken=5ceb240df42bf6e8, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_933FF8199B9296928A88D9FE0FAD2804"
-                    {
-                    "Name" = "8:FastReport.Compat.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:FastReport.Compat.dll"
             "TargetName" = "8:"
@@ -580,37 +561,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B270BAD4BB6ED94A4668802F4197F4C1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.CodeAnalysis.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B270BAD4BB6ED94A4668802F4197F4C1"
-                    {
-                    "Name" = "8:Microsoft.CodeAnalysis.CSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.CodeAnalysis.CSharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EFBE546880AC41ED8AC1B1A47A125087"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C52CB103D2AC4C12B550F6FE7985207D"
             {
             "AssemblyRegister" = "3:1"
@@ -660,37 +610,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E26C46458B903A4CA8C127F909CD177C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.CodeAnalysis.VisualBasic, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E26C46458B903A4CA8C127F909CD177C"
-                    {
-                    "Name" = "8:Microsoft.CodeAnalysis.VisualBasic.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.CodeAnalysis.VisualBasic.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EFBE546880AC41ED8AC1B1A47A125087"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EEACA95F2FA54A5194154723E3440342"

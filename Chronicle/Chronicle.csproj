@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="IPlugable" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FastReport.OpenSource" Version="2025.2.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
     <PackageReference Include="MySqlConnector" Version="2.4.0" />
@@ -25,7 +29,7 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

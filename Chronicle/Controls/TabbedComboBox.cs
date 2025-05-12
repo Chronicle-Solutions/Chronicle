@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chronicle.Controls
 {
+    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public class TabbedComboBox : UserControl
     {
         private TextBox displayBox;
@@ -16,6 +17,7 @@ namespace Chronicle.Controls
 
         public TabbedComboBox()
         {
+            SelectedValueChanged = new EventHandler(defaultHander);
             // Setup display box
             displayBox = new TextBox
             {
@@ -60,6 +62,11 @@ namespace Chronicle.Controls
             dropDownForm.Controls.Add(tabControl);
         }
 
+        private void defaultHander(object? sender, EventArgs e)
+        {
+
+        }
+
         public void AddTab(string title, string colHeader, string[] items)
         {
             var listBox = new ListView { Dock = DockStyle.Fill, MultiSelect = false, View = View.Details, FullRowSelect = true };
@@ -92,7 +99,7 @@ namespace Chronicle.Controls
             var tabPage = new TabPage(title);
             tabPage.Controls.Add(listBox);
             tabControl.TabPages.Add(tabPage);
-            listBox.SelectedIndexChanged += new EventHandler(selectionChanged);
+            listBox.DoubleClick += new EventHandler(selectionChanged);
         }
 
         public void AddTab(string title, string colHeader, ListViewItem[] items)
@@ -109,6 +116,7 @@ namespace Chronicle.Controls
                 if (listBox.SelectedItems.Count != 0)
                 {
                     displayBox.Text = listBox.SelectedItems[0].Text;
+
                     dropDownForm.Hide();
                 }
             };
@@ -116,17 +124,23 @@ namespace Chronicle.Controls
             var tabPage = new TabPage(title);
             tabPage.Controls.Add(listBox);
             tabControl.TabPages.Add(tabPage);
-            displayBox.TextChanged += new EventHandler(selectionChanged);
+            
         }
 
         private void selectionChanged(object? sender, EventArgs e)
         {
-            SelectedValueChanged.Invoke(sender, e);
+            try
+            {
+                SelectedValueChanged.Invoke(sender, e);
+            } catch (NullReferenceException)
+            {
+                // MessageBox.Show(ex.ToString(), ex.GetType().ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
 
-        private void DropButton_Click(object sender, EventArgs e)
+        private void DropButton_Click(object? sender, EventArgs e)
         {
             var location = this.PointToScreen(new Point(0, this.Height));
             dropDownForm.Location = location;
@@ -137,5 +151,6 @@ namespace Chronicle.Controls
 
         // Optional: Expose selected item
         public string SelectedItem => displayBox.Text;
+        public string SelectedTab => tabControl?.SelectedTab?.Text ?? "";
     }
 }

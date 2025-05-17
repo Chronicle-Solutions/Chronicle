@@ -17,3 +17,6 @@
 [submodule "Chronicle.Security.Menu"]
 	path = Chronicle.Security.Menu
 	url = https://github.com/Chronicle-Solutions/Chronicle.Security.Menu.git
+[submodule "ChronicleAuth"]
+	path = ChronicleAuth
+	url = https://github.com/Chronicle-Solutions/Chronicle-Authentication-Server.git

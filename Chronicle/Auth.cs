@@ -36,7 +36,7 @@ namespace Chronicle
             client = new HttpClient();
             client.BaseAddress = new Uri(Globals.AuthServer ?? "");
 
-            var task = Task.Run(() => client.GetAsync("environments"));
+            var task = Task.Run(() => client.GetAsync($"environments/{Globals.ClientID}"));
             task.Wait();
             var task2 = Task.Run(() => task.Result.Content.ReadAsStringAsync());
             var response = task2.Result;
@@ -104,7 +104,7 @@ namespace Chronicle
 
         private void txtUserPass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(null, new EventArgs());
             }

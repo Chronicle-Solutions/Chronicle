@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Xml;
 using MySqlConnector;
+using Microsoft.Win32;
 
 namespace Chronicle
 {
@@ -18,6 +19,7 @@ namespace Chronicle
         public static string ConnectionString { get => connStringBuilder.ConnectionString; }
 
         public static string? AuthServer { get; set; }
+        public static string? ClientID { get; set; }
 
         public static string? OperatorID { get; set; }
 
@@ -28,11 +30,23 @@ namespace Chronicle
     public static class Program
     {
 
-        public static void loadConfig()
+        public static int loadConfig()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Chronicle", "config.xml"));
-            Globals.AuthServer = doc.DocumentElement?.SelectSingleNode("auth")?.InnerText ?? "";
+            // Load config from registry
+            string clientID = (string) Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\ChronicleSoftware", "clientID", "");
+            string authServer = (string)Registry.GetValue("HKEY_CURRENT_USER\\SOFTWARE\\ChronicleSoftware", "authServer", "");
+
+            if (clientID == "" || authServer == "")
+            {
+                MessageBox.Show("Error:\n" +
+                                "Chronicle detected an incomplete install. Please run the \"Chronicle.PostInstall.exe\" file to complete setup before running Chronicle.", "Incomplete Install Detected.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+                
+            }
+            Globals.ClientID = clientID;
+            Globals.AuthServer = authServer;
+
+            return 0;
         }
         /// <summary>
         ///  The main entry point for the application.
@@ -40,7 +54,7 @@ namespace Chronicle
         [STAThread]
         static void Main()
         {
-            loadConfig();
+            if (loadConfig() != 0) return;
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Application.EnableVisualStyles();
@@ -81,7 +95,8 @@ namespace Chronicle
                 {
                     if (Application.OpenForms[0] is not Form frm) return;
                     frm.FormClosed += new FormClosedEventHandler(FormClosed);
-                } else
+                }
+                else
                 {
                     Application.ExitThread();
                 }
@@ -90,7 +105,7 @@ namespace Chronicle
 
         static void logSessionStart()
         {
-            using(MySqlConnection conn = new MySqlConnection(Globals.ConnectionString))
+            using (MySqlConnection conn = new MySqlConnection(Globals.ConnectionString))
             {
                 conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();

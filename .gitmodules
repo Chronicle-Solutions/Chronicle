@@ -20,3 +20,6 @@
 [submodule "ChronicleAuth"]
 	path = ChronicleAuth
 	url = https://github.com/Chronicle-Solutions/Chronicle-Authentication-Server.git
+[submodule "Chronicle.PostInstall"]
+	path = Chronicle.PostInstall
+	url = https://github.com/Chronicle-Solutions/Chronicle.PostInstall

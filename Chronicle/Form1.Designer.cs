@@ -1,4 +1,5 @@
-﻿using Chronicle.Controls;
+﻿using System.Windows.Controls;
+using Chronicle.Controls;
 
 namespace Chronicle
 {
@@ -30,7 +31,9 @@ namespace Chronicle
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             menuStrip2 = new NavMenu();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // menuStrip2
@@ -40,7 +43,6 @@ namespace Chronicle
             menuStrip2.Size = new Size(800, 24);
             menuStrip2.TabIndex = 1;
             menuStrip2.Text = "menuStrip2";
-            menuStrip2.populate(false);
             // 
             // Form1
             // 
@@ -56,5 +58,6 @@ namespace Chronicle
 
         #endregion
         private NavMenu menuStrip2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

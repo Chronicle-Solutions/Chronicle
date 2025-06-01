@@ -97,6 +97,29 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.8.0.x64"
+                    {
+                    "Name" = "8:.NET Runtime 8.0.15 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.8.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.CoreRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Runtime 8.0.15 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.CoreRuntime.8.0.x86"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.15 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.15 (x86)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x86"
+                    }
+                }
             }
         }
     }
@@ -321,7 +344,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Chronicle Software Suite"
         "ProductCode" = "8:{A4D0FCFB-E5AA-48B9-82FA-82371F186782}"
-        "PackageCode" = "8:{15A08564-2713-4816-98F7-FEB3270021AC}"
+        "PackageCode" = "8:{8BFDF6D6-4A86-4F5F-A938-AC246966AC95}"
         "UpgradeCode" = "8:{37172D42-79C2-42F3-B5CE-91BA26F6D401}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -1054,7 +1077,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_510DD7B1CD974AE586036852F238B13B"
             {
-            "SourcePath" = "8:..\\Chronicle.PostInstall\\obj\\Debug\\net8.0\\apphost.exe"
+            "SourcePath" = "8:..\\Chronicle.PostInstall\\obj\\Release\\net8.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9AAECCF499DA41F79C9962B6867E39E6"
@@ -1138,7 +1161,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_95752D03A33C45DBAB9570303C2E94EF"
             {
-            "SourcePath" = "8:..\\Chronicle\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\Chronicle\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9C4F470222374E248E9E404A432AC158"

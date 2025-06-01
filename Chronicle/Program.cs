@@ -3,6 +3,9 @@ using System.Text;
 using System.Xml;
 using MySqlConnector;
 using Microsoft.Win32;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Runtime.InteropServices;
+using Microsoft.Extensions.Logging;
 
 namespace Chronicle
 {
@@ -23,9 +26,10 @@ namespace Chronicle
 
         public static string? OperatorID { get; set; }
 
-        public static Version BaseAppVersion => new Version("0.0.0.1");
+        public static Version BaseAppVersion => new Version("0.1.0.0");
 
         public static long sessionID;
+        public static readonly string LogPath = "";
     }
     public static class Program
     {
@@ -68,7 +72,45 @@ namespace Chronicle
             main.FormClosed += FormClosed;
             main.Show();
             Application.ApplicationExit += new EventHandler(logSessionEnd);
+            var icon = new NotifyIcon();
+
+            icon.Visible = true;
+            icon.ContextMenuStrip = new ContextMenuStrip();
+            icon.Icon = BytesToIcon(Properties.Resources.ChronicleIco);
+            icon.Text = "Chronicle Event Solutions";
+            icon.ContextMenuStrip.Items.Add("Show Application").Click += new EventHandler(openApp);
+            icon.ContextMenuStrip.Items.Add("Exit Application").Click += (s, e) => { Application.ExitThread(); };
             Application.Run();
+        }
+
+        private static void openApp(object? sender, EventArgs e)
+        {
+            
+            // Attempt to open the Main Form for this app.
+            foreach (Form frm in Application.OpenForms)
+            {
+                if(frm is Form1)
+                {
+                    if (!frm.Visible)
+                        frm.Show();
+                    SetForegroundWindow(frm.Handle);
+                    frm.WindowState = FormWindowState.Normal;
+                    return;
+                }
+            }
+
+            // If no Main Form exists, create a new one.
+            Form1 f = new Form1();
+            f.Show();
+
+        }
+
+        public static Icon BytesToIcon(byte[] bytes)
+        {
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                return new Icon(ms);
+            }
         }
 
         static void FormClosed(object? sender, FormClosedEventArgs e)
@@ -118,8 +160,9 @@ namespace Chronicle
                 string IPAddr = reader.ReadToEnd();
 
 
-                cmd.CommandText = "INSERT INTO SESSIONS (operatorID, ipAddress) VALUES (@oprID, @ip);";
+                cmd.CommandText = "INSERT INTO SESSIONS (operatorID, clientID, ipAddress) VALUES (@oprID, @cID, @ip);";
                 cmd.Parameters.AddWithValue("@oprID", Globals.OperatorID);
+                cmd.Parameters.AddWithValue("@cID", Globals.ClientID);
                 cmd.Parameters.AddWithValue("@ip", IPAddr);
                 cmd.ExecuteNonQuery();
                 Globals.sessionID = cmd.LastInsertedId;
@@ -137,5 +180,12 @@ namespace Chronicle
                 cmd.ExecuteNonQuery();
             }
         }
+
+
+
+
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
     }
+
 }

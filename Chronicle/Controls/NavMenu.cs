@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using MySqlConnector;
@@ -9,9 +10,57 @@ namespace Chronicle.Controls
 {
     public class NavMenu : MenuStrip
     {
+        private System.Windows.Forms.Timer _timer;
+        private ToolStripMenuItem openWindows;
         public NavMenu()
         {
-            
+            _timer = new System.Windows.Forms.Timer();
+            openWindows = new ToolStripMenuItem("Open Windows");
+            _timer.Interval = 1000;
+            _timer.Enabled = true;
+            _timer.Tick += updateForms;
+            this.MenuActivate += openMenuActions;
+            this.MenuDeactivate += closeMenuActions;
+        }
+
+        private void openMenuActions(object? sender, EventArgs e)
+        {
+            _timer.Enabled = false;
+        }
+
+        private void closeMenuActions(object? sender, EventArgs e)
+        {
+            _timer.Enabled = true;
+        }
+
+        private void updateForms(object? sender, EventArgs e)
+        {
+            openWindows.DropDownItems.Clear();
+            foreach (Form f in Application.OpenForms)
+            {
+                ToolStripMenuItem itm = new ToolStripMenuItem(f.Text);    
+                openWindows.DropDownItems.Add(itm);
+
+                if (this.TopLevelControl is not Form frm) continue;
+                itm.Checked = frm == f;
+                itm.Click += openForm;
+            }
+        }
+
+        private void openForm(object? sender, EventArgs e)
+        {
+            if (sender is not ToolStripMenuItem itm) return;
+            foreach (Form f in Application.OpenForms)
+            {
+                if(f.Text == itm.Text)
+                {
+                    f.Show();
+                    f.Focus();
+                    if(f.WindowState == FormWindowState.Minimized)
+                        f.WindowState = FormWindowState.Normal;
+                    SetForegroundWindow(f.Handle);
+                }
+            }
         }
 
         public void populate(bool populateInChildMenu)
@@ -26,6 +75,7 @@ namespace Chronicle.Controls
             {
                 populateMenu(this.Items, false);
             }
+            this.Items.Add(openWindows);
         }
 
         private static NavElement? findItem(ToolStripItemCollection root, string path)
@@ -122,5 +172,7 @@ namespace Chronicle.Controls
                 reader.Close();
             }
         }
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
     }
 }

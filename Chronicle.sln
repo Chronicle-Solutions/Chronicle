@@ -24,8 +24,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.Security.Classes"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.Security.Menu", "Chronicle.Security.Menu\Chronicle.Security.Menu.csproj", "{FBB8D431-E772-BE34-0B01-71902BBA7D1A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ChronicleSetup", "ChronicleSetup\ChronicleSetup.vdproj", "{2CA87338-4D78-A14B-BF2E-1D0E0351246A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronicle.PostInstall", "Chronicle.PostInstall\Chronicle.PostInstall.csproj", "{ECAFD0A8-6482-49D1-AA3A-A4F9C731299E}"
 EndProject
 Global
@@ -122,18 +120,6 @@ Global
 		{FBB8D431-E772-BE34-0B01-71902BBA7D1A}.Release|x64.Build.0 = Release|Any CPU
 		{FBB8D431-E772-BE34-0B01-71902BBA7D1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{FBB8D431-E772-BE34-0B01-71902BBA7D1A}.Release|x86.Build.0 = Release|Any CPU
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|Any CPU.ActiveCfg = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|Any CPU.Build.0 = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|x64.ActiveCfg = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|x64.Build.0 = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|x86.ActiveCfg = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Debug|x86.Build.0 = Debug
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|Any CPU.ActiveCfg = Release
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|Any CPU.Build.0 = Release
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|x64.ActiveCfg = Release
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|x64.Build.0 = Release
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|x86.ActiveCfg = Release
-		{2CA87338-4D78-A14B-BF2E-1D0E0351246A}.Release|x86.Build.0 = Release
 		{ECAFD0A8-6482-49D1-AA3A-A4F9C731299E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ECAFD0A8-6482-49D1-AA3A-A4F9C731299E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECAFD0A8-6482-49D1-AA3A-A4F9C731299E}.Debug|x64.ActiveCfg = Debug|Any CPU
